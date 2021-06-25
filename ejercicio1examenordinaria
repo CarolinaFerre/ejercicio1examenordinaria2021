@@ -1,0 +1,102 @@
+package convocatoriaordinaria2021;
+import java.util.Scanner;
+public class ejercicio1 {
+	static Scanner sc=new Scanner(System.in);
+	//variables estáticas
+	
+	static int sumarecaudaciones;
+	static int porcentajenormal;
+	static int porcentajeabonados;
+	static int contadorciclo;
+	static int contadorab;
+	static int contadornor;
+	static int contadortotal;
+	static int dinerorecaudadoabonados;
+	static int dinerorecaudadoinfantil;
+	static int dinerorecaudadojuvenil;
+	static int dinerorecaudadoadulto;
+	static int dinerorecaudadonormal;
+	
+
+	//métodos
+	public static void dineroRecaudado(int dinerorecaudadoabonados,int dinerorecaudadoinfantil,int dinerorecaudadojuvenil,int dinerorecaudadoadulto) {
+		
+
+		
+		dinerorecaudadonormal=dinerorecaudadoinfantil+dinerorecaudadojuvenil+dinerorecaudadoadulto;
+		System.out.println("El dinero recaudado de entradas de abonados es= "+dinerorecaudadoabonados+" euros");
+		System.out.println("El dinero recaudado de entradas normales es= "+dinerorecaudadonormal+" euros");
+		
+
+
+		sumarecaudaciones=dinerorecaudadoabonados+dinerorecaudadoinfantil+dinerorecaudadojuvenil+dinerorecaudadoadulto;
+		System.out.println("El total de recaudación de entradas es= "+sumarecaudaciones+" euros");
+		
+	}
+	
+	
+
+//llamada a los métodos
+ public static void main(String[] args) {
+	 int precioinfantil=2;
+	 int precioabonado=0;
+	 int preciojuvenil=5;
+	 int precioadulto=10;
+	 int dinerorecaudadoabonados = 0;
+	 int dinerorecaudadoinfantil = 0;
+	 int dinerorecaudadojuvenil = 0;
+	 int dinerorecaudadoadulto = 0;
+	 
+ 
+		System.out.println("Bienvenido a nuestro museo");
+		System.out.println("Por favor seleccione una opción:");
+		System.out.println("Si usted es abonado pulse 1");
+		System.out.println("Si usted quiere adquirir una entrada normal pulse 2");
+		System.out.println("Para finalizar pulse 0");
+		
+		while(contadorciclo!=4) {
+		int opcion=sc.nextInt();
+		switch(opcion) {
+			case 1:
+				System.out.println("Usted paga "+precioabonado+" euros");
+				dinerorecaudadoabonados+=precioabonado;
+				contadorab++;
+				contadorciclo++;
+				System.out.println("El dinero total de abonados es= "+dinerorecaudadoabonados);
+				
+				break;
+			case 2:
+				System.out.println("Seleccione edad para calcular su entrada");
+				int edad=sc.nextInt();
+				System.out.println("La edad seleccionada es= "+edad+" años");
+				if((edad>=0)&(edad<=12)){
+					System.out.println("Usted paga "+precioinfantil+" euros");
+					dinerorecaudadoinfantil+=precioinfantil;
+					System.out.println("El dinero recaudado de entrada infantil es= "+dinerorecaudadoinfantil+" euros");
+				}else if((edad>=13)&(edad<=17)) {
+					System.out.println("Usted paga "+preciojuvenil+" euros");
+					dinerorecaudadojuvenil+=preciojuvenil;
+					System.out.println("El dinero recaudado de entrada juvenil es= "+dinerorecaudadojuvenil+" euros");
+					
+				}else if(edad>=18) {
+					System.out.println("Usted paga "+precioadulto+" euros");
+					dinerorecaudadoadulto+=precioadulto;
+					System.out.println("El dinero recaudado de entrada adulta es= "+dinerorecaudadoadulto+" euros");
+				}
+				contadornor++;
+				contadorciclo++;
+				break;
+			case 0:
+				ejercicio1.dineroRecaudado(dinerorecaudadoabonados,dinerorecaudadoinfantil,dinerorecaudadojuvenil,dinerorecaudadoadulto);
+				contadortotal=contadorab+contadornor;
+				System.out.println("El total de abonados es= "+contadorab);
+				porcentajeabonados=(contadorab*100/contadortotal);
+				System.out.println("El porcentaje de abonados es= "+porcentajeabonados+"%");
+				System.out.println("El total de entradas normal es= "+contadornor);
+				porcentajenormal=contadornor*100/contadortotal;
+				System.out.println("El porcentaje de entradas normales es= "+porcentajenormal+"%");
+				break;
+			default:
+				System.out.println("Su solicitud no está en nuestros sistemas, disculpe las molestias..");
+				
+		}
